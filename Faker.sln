@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Faker", "Faker\Faker.csproj", "{E61471E5-AD26-4553-959E-2AF5433C0D5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerConsole", "FakerConsole\FakerConsole.csproj", "{6CA4F81B-B9AD-4AB5-8EA9-D84806EA9506}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakerUnitTest", "FakerUnitTest\FakerUnitTest.csproj", "{42302757-AFA0-4D69-BA95-484B6F39B5F9}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E61471E5-AD26-4553-959E-2AF5433C0D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E61471E5-AD26-4553-959E-2AF5433C0D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E61471E5-AD26-4553-959E-2AF5433C0D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E61471E5-AD26-4553-959E-2AF5433C0D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CA4F81B-B9AD-4AB5-8EA9-D84806EA9506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA4F81B-B9AD-4AB5-8EA9-D84806EA9506}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CA4F81B-B9AD-4AB5-8EA9-D84806EA9506}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CA4F81B-B9AD-4AB5-8EA9-D84806EA9506}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42302757-AFA0-4D69-BA95-484B6F39B5F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42302757-AFA0-4D69-BA95-484B6F39B5F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42302757-AFA0-4D69-BA95-484B6F39B5F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42302757-AFA0-4D69-BA95-484B6F39B5F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
