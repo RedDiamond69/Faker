@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FakerUnitTest.Test
+﻿namespace FakerUnitTest.Test
 {
     public class CustomClassWithConstructor : CustomClassWithProperty
     {
@@ -13,7 +7,7 @@ namespace FakerUnitTest.Test
         public CustomClassWithConstructor(byte value1, byte value2)
         {
             ByteValue1 = value1;
-            someValue = value1;
+            _byteValue = value1;
             ByteValue2 = value2;
         }
     }

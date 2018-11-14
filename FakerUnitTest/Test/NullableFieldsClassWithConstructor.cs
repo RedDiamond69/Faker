@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace FakerUnitTest.Test
 {
     public class NullableFieldsClassWithConstructor : NullableFieldsClassNoConstructor
     {
-        public NullableFieldsClassWithConstructor(string str)
+        public NullableFieldsClassWithConstructor(List<byte> list)
         {
-            stringField = str;
+            listField = list;
         }
     }
 }

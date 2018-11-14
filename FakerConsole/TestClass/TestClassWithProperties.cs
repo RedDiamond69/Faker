@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Xml;
-using System.Threading.Tasks;
 
 namespace FakerConsole.TestClass
 {

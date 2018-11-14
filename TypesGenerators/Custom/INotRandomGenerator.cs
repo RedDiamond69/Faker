@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TypesGenerators.Custom
+﻿namespace TypesGenerators.Custom
 {
     public interface INotRandomGenerator : ITypesGenerators
     {
