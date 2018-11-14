@@ -8,13 +8,18 @@ namespace Faker
 {
     public class Faker : IFaker
     {
-        private readonly string defPluginsFolder = "Extensions";
+        private Dictionary<Type, IBaseGenerator> _baseGenerators;
+        private Dictionary<Type, ICollectionGenerator> _collectionGenerators;
+        private Dictionary<Type, IArrayGenerator> _arrayGenerators;
+        private Dictionary<PropertyInfo, IBaseGenerator> _customGenerators;
+        private Stack<Type> generatedTypesStack;
+        private static readonly string _defPluginsFolder = "Extensions";
 
-        public Faker() : this(defPluginsFolder, null) { }
+        public Faker() : this(_defPluginsFolder, null) { }
 
         public Faker(string pluginsFolder) : this(pluginsFolder, null) { }
 
-        public Faker(IFakerConfig config) : this(defPluginsFolder, config) { }
+        public Faker(IFakerConfig config) : this(_defPluginsFolder, config) { }
 
         public Faker(string pluginsFolder, IFakerConfig config)
         {
