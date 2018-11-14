@@ -19,7 +19,7 @@ namespace TypesGenerators
             Parallel.Invoke(() => AddGeneratorToDictionary(new BoolValueGenerator(), dictionary),
                 () => AddGeneratorToDictionary(new ByteValueGenerator(), dictionary),
                 () => AddGeneratorToDictionary(new DateTimeValueGenerator(), dictionary),
-                () => AddGeneratorToDictionary(new DecimalValueGenerator(), dictionary),
+                () => AddGeneratorToDictionary(new CharValueGenerator(), dictionary),
                 () => AddGeneratorToDictionary(new DoubleValueGenerator(), dictionary),
                 () => AddGeneratorToDictionary(new FloatValueGenerator(), dictionary),
                 () => AddGeneratorToDictionary(new IntValueGenerator(), dictionary),
