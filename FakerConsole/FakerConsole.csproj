@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="FakerConsole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializer\ConsoleJsonSerializer.cs" />
     <Compile Include="TestClass\TestClassWithConstructor.cs" />
     <Compile Include="TestClass\TestClassWithProperties.cs" />
   </ItemGroup>
