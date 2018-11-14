@@ -47,5 +47,11 @@
     <Compile Include="IFakerConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TypesGenerators\TypesGenerators.csproj">
+      <Project>{205ED023-BB52-4ED8-917F-09C0DD421B4E}</Project>
+      <Name>TypesGenerators</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

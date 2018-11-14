@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using TypesGenerators.BaseTypes;
 
 namespace Faker
 {
@@ -24,8 +25,8 @@ namespace Faker
             Expression expressionBody = expression.Body;
             if (expressionBody.NodeType != ExpressionType.MemberAccess) throw new ArgumentException("Unacceptable expression!\n");
             IBaseGenerator generator = (IBaseGenerator)Activator.CreateInstance(typeof(TGenerator));
-            if (!generator.GeneratedType.Equals(typeof(TPropertyType))) throw new ArgumentException("Unacceptable generator!\n");
-            generators.Add((PropertyInfo)((MemberExpression)expressionBody).Member, generator);
+            if (!generator.GenerateType.Equals(typeof(TPropertyType))) throw new ArgumentException("Unacceptable generator!\n");
+            _generators.Add((PropertyInfo)((MemberExpression)expressionBody).Member, generator);
         }
     }
 }
