@@ -51,6 +51,18 @@
   <ItemGroup>
     <Compile Include="FakerUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\ArrayClass.cs" />
+    <Compile Include="Test\CustomClassWithConstructor.cs" />
+    <Compile Include="Test\CustomClassWithProperty.cs" />
+    <Compile Include="Test\IndirectRecursiveClass1.cs" />
+    <Compile Include="Test\IndirectRecursiveClass2.cs" />
+    <Compile Include="Test\ListClass.cs" />
+    <Compile Include="Test\NullableFieldsClassNoConstructor.cs" />
+    <Compile Include="Test\NullableFieldsClassWithConstructor.cs" />
+    <Compile Include="Test\NullablePropertiesClassNoConstructor.cs" />
+    <Compile Include="Test\NullablePropertiesClassWithConstructor.cs" />
+    <Compile Include="Test\SelfRecursiveClassNoConstructor.cs" />
+    <Compile Include="Test\SelfRecursiveClassWithConstructor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
