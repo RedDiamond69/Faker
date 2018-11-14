@@ -40,7 +40,7 @@ namespace TypesGenerators
             return dictionary;
         }
 
-        public static Dictionary<int, IArrayGenerator> CreateArraysGeneratorsDictionary(Dictionary<Type, IBaseGenerator> baseGenerators)
+        public static Dictionary<int, IArrayGenerator> InitArrayGeneratorsDictionary(Dictionary<Type, IBaseGenerator> baseGenerators)
         {
             Dictionary<int, IArrayGenerator> dictionary = new Dictionary<int, IArrayGenerator>();
             IArrayGenerator generator = new SingleRankArrayGenerator(baseGenerators);
