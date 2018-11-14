@@ -13,7 +13,7 @@ namespace Faker
     {
         private Dictionary<Type, IBaseGenerator> _baseGenerators;
         private Dictionary<Type, ICollectionGenerator> _collectionGenerators;
-        private Dictionary<Type, IArrayGenerator> _arrayGenerators;
+        private Dictionary<int, IArrayGenerator> _arrayGenerators;
         private Dictionary<PropertyInfo, IBaseGenerator> _customGenerators;
         private Stack<Type> _generatedTypesStack;
         private static readonly string _defPluginsFolder = "Extensions";
@@ -37,7 +37,41 @@ namespace Faker
         private object Create(Type type)
         {
             object generatedType;
-
+            if (_baseGenerators.TryGetValue(type, out IBaseGenerator baseGenerator)) generatedType = baseGenerator.Generate();
+            else 
+            if (type.IsGenericType && 
+                _collectionGenerators.TryGetValue(type.GetGenericTypeDefinition(), 
+                out ICollectionGenerator collectionGenerator)) generatedType = collectionGenerator.Generate(type.GenericTypeArguments[0]);
+            else 
+            if (type.IsArray && 
+                _arrayGenerators.TryGetValue(type.GetArrayRank(), 
+                out IArrayGenerator arrayGenerator)) generatedType = arrayGenerator.Generate(type.GetElementType());
+            else 
+            if (type.IsClass && 
+                !type.IsGenericType && 
+                !type.IsArray && 
+                !type.IsPointer && 
+                !type.IsAbstract && 
+                !_generatedTypesStack.Contains(type))
+            {
+                int maxConstructorFieldsCount = 0, curConstructorFieldsCount;
+                ConstructorInfo constructorToUse = null;
+                foreach (ConstructorInfo constructor in type.GetConstructors())
+                {
+                    curConstructorFieldsCount = constructor.GetParameters().Length;
+                    if (curConstructorFieldsCount > maxConstructorFieldsCount)
+                    {
+                        maxConstructorFieldsCount = curConstructorFieldsCount;
+                        constructorToUse = constructor;
+                    }
+                }
+                _generatedTypesStack.Push(type);
+                if (constructorToUse == null) generatedType = CreateByProperties(type);
+                else generatedType = CreateByConstractor(type, constructorToUse);
+                _generatedTypesStack.Pop();
+            }
+            else if (type.IsValueType) generatedType = Activator.CreateInstance(type);
+            else generatedType = null;
             return generatedType;
         }
 
