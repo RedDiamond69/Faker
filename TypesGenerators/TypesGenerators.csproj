@@ -55,13 +55,13 @@
     <Compile Include="BaseTypes\UIntValueGenerator.cs" />
     <Compile Include="BaseTypes\ULongValueGenerator.cs" />
     <Compile Include="BaseTypes\UShortValueGenerator.cs" />
+    <Compile Include="CollectionTypes\ICollectionGenerator.cs" />
     <Compile Include="ITypesGenerators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypesGeneratorsInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ArrayTypes\" />
-    <Folder Include="CollectionTypes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
