@@ -12,7 +12,7 @@ namespace Faker
         private Dictionary<Type, ICollectionGenerator> _collectionGenerators;
         private Dictionary<Type, IArrayGenerator> _arrayGenerators;
         private Dictionary<PropertyInfo, IBaseGenerator> _customGenerators;
-        private Stack<Type> generatedTypesStack;
+        private Stack<Type> _generatedTypesStack;
         private static readonly string _defPluginsFolder = "Extensions";
 
         public Faker() : this(_defPluginsFolder, null) { }
