@@ -98,9 +98,20 @@ namespace Faker
 
         private object CreateByConstractor(Type type, ConstructorInfo constructorInfo)
         {
-            object generatedType;
-
-            return generatedType;
+            List<object> parametersValues = new List<object>();
+            foreach (ParameterInfo parameterInfo in constructorInfo.GetParameters())
+            {
+                if (!CreateByCustomGenerator(parameterInfo, type, out object value)) value = Create(parameterInfo.ParameterType);
+                parametersValues.Add(value);
+            }
+            try
+            {
+                return constructorInfo.Invoke(parametersValues.ToArray());
+            }
+            catch (TargetInvocationException)
+            {
+                return null;
+            }
         }
 
         private bool CreateByCustomGenerator(PropertyInfo propertyInfo, out object generatedType)
