@@ -121,7 +121,18 @@ namespace Faker
 
         private bool CreateByCustomGenerator(ParameterInfo parameterInfo, Type type, out object generatedType)
         {
-
+            foreach (KeyValuePair<PropertyInfo, IBaseGenerator> keyValue in _customGenerators)
+            {
+                if ((keyValue.Key.Name.ToLower() == parameterInfo.Name.ToLower()) && 
+                    keyValue.Value.GenerateType.Equals(parameterInfo.ParameterType) && 
+                    keyValue.Key.ReflectedType.Equals(type))
+                {
+                    generatedType = keyValue.Value.Generate();
+                    return true;
+                }
+            }
+            generatedType = default(object);
+            return false;
         }
 
         private bool CreateByCustomGenerator(FieldInfo fieldInfo, out object generatedType)
