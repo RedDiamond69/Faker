@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FakerUnitTest.Test
 {
-    public class NullablePropertiesClassWithConstructor
+    public class NullablePropertiesClassWithConstructor : NullablePropertiesClassNoConstructor
     {
+        public NullablePropertiesClassWithConstructor(DateTime dateTime)
+        {
+            DateTimeProperty = dateTime;
+        }
     }
 }

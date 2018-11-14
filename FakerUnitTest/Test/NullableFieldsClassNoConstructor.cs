@@ -8,5 +8,8 @@ namespace FakerUnitTest.Test
 {
     public class NullableFieldsClassNoConstructor
     {
+        public DateTime dateTimeField;
+        public string stringField;
+        public object objectField;
     }
 }

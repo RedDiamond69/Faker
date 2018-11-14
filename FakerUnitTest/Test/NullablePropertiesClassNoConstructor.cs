@@ -8,5 +8,8 @@ namespace FakerUnitTest.Test
 {
     public class NullablePropertiesClassNoConstructor
     {
+        public DateTime DateTimeProperty { get; set; }
+        public string StringProperty { get; set; }
+        public object ObjectProperty { get; set; }
     }
 }

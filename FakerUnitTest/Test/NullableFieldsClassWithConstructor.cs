@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FakerUnitTest.Test
 {
-    public class NullableFieldsClassWithConstructor
+    public class NullableFieldsClassWithConstructor : NullableFieldsClassNoConstructor
     {
+        public NullableFieldsClassWithConstructor(string str)
+        {
+            stringField = str;
+        }
     }
 }
