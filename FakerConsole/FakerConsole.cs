@@ -1,4 +1,5 @@
 ﻿using Faker;
+using FakerConsole.Serializer;
 using FakerConsole.TestClass;
 using System;
 using System.Collections.Generic;
