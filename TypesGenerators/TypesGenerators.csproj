@@ -59,6 +59,7 @@
     <Compile Include="BaseTypes\UShortValueGenerator.cs" />
     <Compile Include="CollectionTypes\ICollectionGenerator.cs" />
     <Compile Include="CollectionTypes\ListGenerator.cs" />
+    <Compile Include="Custom\ByteNotRandomGenerator.cs" />
     <Compile Include="Custom\INotRandomGenerator.cs" />
     <Compile Include="ITypesGenerators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
