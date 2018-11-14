@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrayTypes\IArrayGenerator.cs" />
     <Compile Include="BaseTypes\BoolValueGenerator.cs" />
     <Compile Include="BaseTypes\ByteValueGenerator.cs" />
     <Compile Include="BaseTypes\CharValueGenerator.cs" />
@@ -61,8 +62,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypesGeneratorsInitialize.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ArrayTypes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
