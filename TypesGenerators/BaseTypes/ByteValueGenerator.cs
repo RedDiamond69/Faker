@@ -8,11 +8,19 @@ namespace TypesGenerators.BaseTypes
 {
     public class ByteValueGenerator : IBaseGenerator
     {
-        public Type GenerateType => throw new NotImplementedException();
+        private readonly Random _random;
+
+        public Type GenerateType { get; protected set; }
+
+        public ByteValueGenerator()
+        {
+            GenerateType = typeof(byte);
+            _random = new Random();
+        }
 
         public object Generate()
         {
-            throw new NotImplementedException();
+            return (byte)_random.Next();
         }
     }
 }
