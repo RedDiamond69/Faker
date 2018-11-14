@@ -8,11 +8,19 @@ namespace TypesGenerators.BaseTypes
 {
     public class BoolValueGenerator : IBaseGenerator
     {
-        public Type GenerateType => throw new NotImplementedException();
+        private readonly Random _random;
+
+        public Type GenerateType { get; protected set; }
+
+        public BoolValueGenerator()
+        {
+            GenerateType = typeof(bool);
+            _random = new Random();
+        }
 
         public object Generate()
         {
-            throw new NotImplementedException();
+            return _random.Next(0, 1) == 1 ? true : false;
         }
     }
 }
