@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrayTypes\IArrayGenerator.cs" />
+    <Compile Include="ArrayTypes\SingleRankArrayGenerator.cs" />
     <Compile Include="BaseTypes\BoolValueGenerator.cs" />
     <Compile Include="BaseTypes\ByteValueGenerator.cs" />
     <Compile Include="BaseTypes\CharValueGenerator.cs" />
