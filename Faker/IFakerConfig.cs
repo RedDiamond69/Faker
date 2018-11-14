@@ -13,6 +13,6 @@ namespace Faker
         void Add<TType, TPropertyType, TGenerator>(Expression<Func<TType, TPropertyType>> expression)
             where TType : class, TGenerator : IBaseGenerator, new();
 
-        Dictionary<PropertyInfo, IBaseGenerator> _generators;
+        Dictionary<PropertyInfo, IBaseGenerator> Generators { get; }
     }
 }
