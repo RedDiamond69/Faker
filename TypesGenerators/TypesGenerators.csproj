@@ -54,6 +54,7 @@
     <Compile Include="BaseTypes\ShortValueGenerator.cs" />
     <Compile Include="BaseTypes\UIntValueGenerator.cs" />
     <Compile Include="BaseTypes\ULongValueGenerator.cs" />
+    <Compile Include="BaseTypes\UShortValueGenerator.cs" />
     <Compile Include="ITypesGenerators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypesGeneratorsInitialize.cs" />
