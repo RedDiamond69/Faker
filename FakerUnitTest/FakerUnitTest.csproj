@@ -61,6 +61,7 @@
     <Compile Include="Test\NullableFieldsClassWithConstructor.cs" />
     <Compile Include="Test\NullablePropertiesClassNoConstructor.cs" />
     <Compile Include="Test\NullablePropertiesClassWithConstructor.cs" />
+    <Compile Include="Test\PrivateConstractorClass.cs" />
     <Compile Include="Test\SelfRecursiveClassNoConstructor.cs" />
     <Compile Include="Test\SelfRecursiveClassWithConstructor.cs" />
   </ItemGroup>

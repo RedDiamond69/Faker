@@ -32,6 +32,13 @@ namespace FakerUnitTest
         }
 
         [TestMethod]
+        public void PrivateConstructorTest()
+        {
+            PrivateConstractorClass noConstructorObject = faker.Create<PrivateConstractorClass>();
+            Assert.AreEqual(null, noConstructorObject);
+        }
+
+        [TestMethod]
         public void NullablePropertiesTest()
         {
             NullablePropertiesClassNoConstructor noConstructorObject = faker.Create<NullablePropertiesClassNoConstructor>();
