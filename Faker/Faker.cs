@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using TypesGenerators.ArrayTypes;
 using TypesGenerators.BaseTypes;
 using TypesGenerators.CollectionTypes;
+using TypesGenerators;
+using System.IO;
 
 namespace Faker
 {
@@ -26,7 +28,41 @@ namespace Faker
 
         public Faker(string pluginsFolder, IFakerConfig config)
         {
-
+            IBaseGenerator pluginGenerator;
+            List<Assembly> assemblies = new List<Assembly>();
+            _generatedTypesStack = new Stack<Type>();
+            _baseGenerators = TypesGeneratorsInitialize.InitBaseGeneratorsDictionary();
+            _collectionGenerators = TypesGeneratorsInitialize.InitCollectionGeneratorsDictionary(_baseGenerators);
+            _arrayGenerators = TypesGeneratorsInitialize.InitArrayGeneratorsDictionary(_baseGenerators);
+            if (config == null) _customGenerators = new Dictionary<PropertyInfo, IBaseGenerator>();
+            else _customGenerators = config.Generators;
+            try
+            {
+                foreach (string file in Directory.GetFiles(pluginsFolder, "*.dll"))
+                {
+                    try
+                    {
+                        assemblies.Add(Assembly.LoadFile(new FileInfo(file).FullName));
+                    }
+                    catch (BadImageFormatException) { }
+                    catch (FileLoadException) { }
+                }
+            }
+            catch (DirectoryNotFoundException) { }
+            foreach (Assembly assembly in assemblies)
+            {
+                foreach (Type type in assembly.GetTypes())
+                {
+                    foreach (Type typeInterface in type.GetInterfaces())
+                    {
+                        if (typeInterface.Equals(typeof(IBaseGenerator)))
+                        {
+                            pluginGenerator = (IBaseGenerator)Activator.CreateInstance(type);
+                            _baseGenerators.Add(pluginGenerator.GenerateType, pluginGenerator);
+                        }
+                    }
+                }
+            }
         }
 
         public T Create<T>()
@@ -116,7 +152,16 @@ namespace Faker
 
         private bool CreateByCustomGenerator(PropertyInfo propertyInfo, out object generatedType)
         {
-
+            if (_customGenerators.TryGetValue(propertyInfo, out IBaseGenerator generator))
+            {
+                generatedType = generator.Generate();
+                return true;
+            }
+            else
+            {
+                generatedType = default(object);
+                return false;
+            }
         }
 
         private bool CreateByCustomGenerator(ParameterInfo parameterInfo, Type type, out object generatedType)
@@ -137,7 +182,18 @@ namespace Faker
 
         private bool CreateByCustomGenerator(FieldInfo fieldInfo, out object generatedType)
         {
-
+            foreach (KeyValuePair<PropertyInfo, IBaseGenerator> keyValue in _customGenerators)
+            {
+                if ((keyValue.Key.Name.ToLower() == fieldInfo.Name.ToLower()) && 
+                    keyValue.Value.GenerateType.Equals(fieldInfo.FieldType) && 
+                    keyValue.Key.ReflectedType.Equals(fieldInfo.ReflectedType))
+                {
+                    generatedType = keyValue.Value.Generate();
+                    return true;
+                }
+            }
+            generatedType = default(object);
+            return false;
         }
     }
 }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TypesGenerators.ArrayTypes;
+using TypesGenerators.BaseTypes;
+using TypesGenerators.CollectionTypes;
 
 namespace TypesGenerators
 {
@@ -10,7 +13,7 @@ namespace TypesGenerators
     {
         private static void AddGeneratorToDictionary(IBaseGenerator generator, Dictionary<Type, IBaseGenerator> dictionary)
         {
-            dictionary.Add(generator.GeneratedType, generator);
+            dictionary.Add(generator.GenerateType, generator);
         }
 
         public static Dictionary<Type, IBaseGenerator> InitBaseGeneratorsDictionary()
@@ -36,7 +39,7 @@ namespace TypesGenerators
         {
             Dictionary<Type, ICollectionGenerator> dictionary = new Dictionary<Type, ICollectionGenerator>();
             ICollectionGenerator generator = new ListGenerator(baseGenerators);
-            dictionary.Add(generator.GeneratedType, generator);
+            dictionary.Add(generator.GenerateType, generator);
             return dictionary;
         }
 
