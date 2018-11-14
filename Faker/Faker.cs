@@ -77,8 +77,22 @@ namespace Faker
 
         private object CreateByProperties(Type type)
         {
-            object generatedType;
-
+            object generatedType = Activator.CreateInstance(type);
+            foreach (FieldInfo fieldInfo in type.GetFields(BindingFlags.Instance | 
+                BindingFlags.Static | BindingFlags.Public))
+            {
+                if (!CreateByCustomGenerator(fieldInfo, out object value)) value = Create(fieldInfo.FieldType);
+                fieldInfo.SetValue(generatedType, value);
+            }
+            foreach (PropertyInfo propertyInfo in type.GetProperties(BindingFlags.Instance | 
+                BindingFlags.Static | BindingFlags.Public))
+            {
+                if (propertyInfo.CanWrite)
+                {
+                    if (!CreateByCustomGenerator(propertyInfo, out object value)) value = Create(propertyInfo.PropertyType);
+                    propertyInfo.SetValue(generatedType, value);
+                }
+            }
             return generatedType;
         }
 
