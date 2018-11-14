@@ -9,17 +9,17 @@ namespace TypesGenerators.Custom
 {
     public class ByteNotRandomGenerator : IBaseGenerator, INotRandomGenerator
     {
-        public static int DefaultGeneratedValue { get => 255; }
+        public static byte DefaultGeneratedValue { get => 255; }
         public Type GenerateType { get; protected set; }
-        public int GenerateValue { get; protected set; }
+        public byte GenerateValue { get; protected set; }
 
         public ByteNotRandomGenerator()
             : this(DefaultGeneratedValue)
         { }
 
-        public ByteNotRandomGenerator(int generatedValue)
+        public ByteNotRandomGenerator(byte generatedValue)
         {
-            GenerateType = typeof(int);
+            GenerateType = typeof(byte);
             GenerateValue = generatedValue;
         }
 

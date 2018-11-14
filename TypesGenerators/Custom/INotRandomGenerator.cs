@@ -8,6 +8,6 @@ namespace TypesGenerators.Custom
 {
     public interface INotRandomGenerator : ITypesGenerators
     {
-        int GenerateValue { get; }
+        byte GenerateValue { get; }
     }
 }
