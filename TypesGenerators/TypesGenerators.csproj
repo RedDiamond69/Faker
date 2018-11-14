@@ -46,6 +46,7 @@
     <Compile Include="BaseTypes\CharValueGenerator.cs" />
     <Compile Include="BaseTypes\DateTimeValueGenerator.cs" />
     <Compile Include="BaseTypes\DoubleValueGenerator.cs" />
+    <Compile Include="BaseTypes\FloatValueGenerator.cs" />
     <Compile Include="BaseTypes\IBaseGenerator.cs" />
     <Compile Include="BaseTypes\IntValueGenerator.cs" />
     <Compile Include="BaseTypes\SByteValueGenerator.cs" />
