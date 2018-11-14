@@ -41,13 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseTypes\ByteValueGenerator.cs" />
+    <Compile Include="BaseTypes\IBaseGenerator.cs" />
     <Compile Include="ITypesGenerators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypesGeneratorsInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ArrayTypes\" />
-    <Folder Include="BaseTypes\" />
     <Folder Include="CollectionTypes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
