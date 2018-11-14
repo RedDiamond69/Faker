@@ -14,7 +14,7 @@ namespace TypesGenerators.BaseTypes
 
         public SByteValueGenerator()
         {
-            GenerateType = typeof(byte);
+            GenerateType = typeof(sbyte);
             _random = new Random();
         }
 
