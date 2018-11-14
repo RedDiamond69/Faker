@@ -44,6 +44,7 @@
     <Compile Include="BaseTypes\BoolValueGenerator.cs" />
     <Compile Include="BaseTypes\ByteValueGenerator.cs" />
     <Compile Include="BaseTypes\IBaseGenerator.cs" />
+    <Compile Include="BaseTypes\IntValueGenerator.cs" />
     <Compile Include="BaseTypes\SByteValueGenerator.cs" />
     <Compile Include="BaseTypes\ShortValueGenerator.cs" />
     <Compile Include="ITypesGenerators.cs" />
