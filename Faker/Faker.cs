@@ -32,8 +32,10 @@ namespace Faker
             _baseGenerators = TypesGeneratorsInitialize.InitBaseGeneratorsDictionary();
             _collectionGenerators = TypesGeneratorsInitialize.InitCollectionGeneratorsDictionary(_baseGenerators);
             _arrayGenerators = TypesGeneratorsInitialize.InitArrayGeneratorsDictionary(_baseGenerators);
-            if (config == null) _customGenerators = new Dictionary<PropertyInfo, IBaseGenerator>();
-            else _customGenerators = config.Generators;
+            if (config == null)
+                _customGenerators = new Dictionary<PropertyInfo, IBaseGenerator>();
+            else
+                _customGenerators = config.Generators;
             try
             {
                 foreach (string file in Directory.GetFiles(pluginsFolder, "*.dll"))
@@ -71,22 +73,15 @@ namespace Faker
         private object Create(Type type)
         {
             object generatedType;
-            if (_baseGenerators.TryGetValue(type, out IBaseGenerator baseGenerator)) generatedType = baseGenerator.Generate();
-            else
-            if (type.IsGenericType &&
-                _collectionGenerators.TryGetValue(type.GetGenericTypeDefinition(),
-                out ICollectionGenerator collectionGenerator)) generatedType = collectionGenerator.Generate(type.GenericTypeArguments[0]);
-            else
-            if (type.IsArray &&
-                _arrayGenerators.TryGetValue(type.GetArrayRank(),
-                out IArrayGenerator arrayGenerator)) generatedType = arrayGenerator.Generate(type.GetElementType());
-            else
-            if (type.IsClass &&
-                !type.IsGenericType &&
-                !type.IsArray &&
-                !type.IsPointer &&
-                !type.IsAbstract &&
-                !_generatedTypesStack.Contains(type))
+            if (_baseGenerators.TryGetValue(type, out IBaseGenerator baseGenerator))
+                generatedType = baseGenerator.Generate();
+            else if (type.IsGenericType && _collectionGenerators.TryGetValue(type.GetGenericTypeDefinition(), 
+                out ICollectionGenerator collectionGenerator))
+                generatedType = collectionGenerator.Generate(type.GenericTypeArguments[0]);
+            else if (type.IsArray && _arrayGenerators.TryGetValue(type.GetArrayRank(),
+                out IArrayGenerator arrayGenerator))
+                generatedType = arrayGenerator.Generate(type.GetElementType());
+            else if (type.IsClass && !type.IsGenericType && !type.IsArray && !type.IsPointer && !type.IsAbstract && !_generatedTypesStack.Contains(type))
             {
                 int maxConstructorFieldsCount = 0, curConstructorFieldsCount;
                 ConstructorInfo constructorToUse = null;
@@ -142,7 +137,8 @@ namespace Faker
             List<object> parametersValues = new List<object>();
             foreach (ParameterInfo parameterInfo in constructorInfo.GetParameters())
             {
-                if (!CreateByCustomGenerator(parameterInfo, type, out object value)) value = Create(parameterInfo.ParameterType);
+                if (!CreateByCustomGenerator(parameterInfo, type, out object value))
+                    value = Create(parameterInfo.ParameterType);
                 parametersValues.Add(value);
             }
             try
