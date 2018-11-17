@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Faker;
 using FakerUnitTest.Test;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -41,8 +42,9 @@ namespace FakerUnitTest
         [TestMethod]
         public void PluginsTest()
         {
-            PrivateConstractorClass noConstructorObject = faker.Create<PrivateConstractorClass>();
-            Assert.AreEqual(null, noConstructorObject);
+            ClassWithStringDecimalProperties classWithStringDecimalProperties = faker.Create<ClassWithStringDecimalProperties>();
+            Assert.AreNotEqual(null, classWithStringDecimalProperties.SomeString);
+            Assert.AreNotEqual(default(decimal), classWithStringDecimalProperties.SomeDecimal);
         }
 
         [TestMethod]
@@ -55,7 +57,7 @@ namespace FakerUnitTest
 
             NullablePropertiesClassWithConstructor constructorObject = faker.Create<NullablePropertiesClassWithConstructor>();
             Assert.AreNotEqual(null, constructorObject.DateTimeProperty);
-            Assert.AreEqual(default(string), constructorObject.listField);
+            Assert.AreEqual(default(List<byte>), constructorObject.listField);
             Assert.AreEqual(default(object), constructorObject.ObjectProperty);
         }
 
