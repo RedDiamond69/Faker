@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Linq;
 using TypesGenerators.ArrayTypes;
 using TypesGenerators.BaseTypes;
 using TypesGenerators.CollectionTypes;
@@ -16,7 +17,7 @@ namespace Faker
         private Dictionary<int, IArrayGenerator> _arrayGenerators;
         private Dictionary<PropertyInfo, IBaseGenerator> _customGenerators;
         private Stack<Type> _generatedTypesStack;
-        private static readonly string _defPluginsFolder = "Extensions";
+        private static readonly string _defPluginsFolder = "..\\..\\..\\Extensions";
 
         public Faker() : this(_defPluginsFolder, null) { }
 
@@ -49,19 +50,15 @@ namespace Faker
                 }
             }
             catch (DirectoryNotFoundException) { }
-            foreach (Assembly assembly in assemblies)
+            var types = from assembly in assemblies
+                        from type in assembly.GetTypes()
+                        from typeInterface in type.GetInterfaces()
+                        where typeInterface.Equals(typeof(IBaseGenerator))
+                        select type;
+            foreach(var t in types)
             {
-                foreach (Type type in assembly.GetTypes())
-                {
-                    foreach (Type typeInterface in type.GetInterfaces())
-                    {
-                        if (typeInterface.Equals(typeof(IBaseGenerator)))
-                        {
-                            pluginGenerator = (IBaseGenerator)Activator.CreateInstance(type);
-                            _baseGenerators.Add(pluginGenerator.GenerateType, pluginGenerator);
-                        }
-                    }
-                }
+                pluginGenerator = (IBaseGenerator)Activator.CreateInstance(t);
+                _baseGenerators.Add(pluginGenerator.GenerateType, pluginGenerator);
             }
         }
 
