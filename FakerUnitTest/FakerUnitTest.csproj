@@ -52,6 +52,7 @@
     <Compile Include="FakerUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\ArrayClass.cs" />
+    <Compile Include="Test\ClassWithStringDecimalProperties.cs" />
     <Compile Include="Test\CustomClassWithConstructor.cs" />
     <Compile Include="Test\CustomClassWithProperty.cs" />
     <Compile Include="Test\IndirectRecursiveClass1.cs" />
